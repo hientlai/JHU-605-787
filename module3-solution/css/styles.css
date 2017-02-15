@@ -1,0 +1,53 @@
+/** HEADER **/
+#header-nav {
+  background-color: #15B5AB;
+  border-radius: 0;
+  border: 0;
+}
+
+.navbar-brand {
+  padding-top: 25px;
+}
+
+.navbar-brand h1 { 
+  color: #557c3e;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: .75;
+}
+
+#nav-list a {
+  color: #951C49;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+#nav-list {
+  margin-top: 0px;
+  background: white;
+}
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+  border: 1px solid #61122f;
+}
+
+.navbar-header button.navbar-toggle {
+  margin-top: 15px;
+}
+
+.item-content {
+  color: black;
+  background-color: #15B5AB;
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+
+.item-content p {
+  padding: 15px;
+}
+
+
