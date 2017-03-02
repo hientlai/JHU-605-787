@@ -46,6 +46,7 @@ var insertProperty = function (string, propName, propValue) {
 };
 
 // Remove the class 'active' from home and switch to Menu button
+//Not in used, please use switchToActive
 var switchMenuToActive = function () {
   // Remove 'active' from home button
   var classes = document.querySelector("#navHomeButton").className;
@@ -58,6 +59,32 @@ var switchMenuToActive = function () {
     classes += " active";
     document.querySelector("#navMenuButton").className = classes;
   }
+
+};
+
+//remove active from all elements under nav-list and add active to an element
+//solve the issue with About button is not actived
+var switchToActive = function (element) {
+  // Remove 'active' from all elements under nav-list
+  var activeButtons = document.getElementById("nav-list").childNodes;
+  activeButtons.forEach(function(elm) {
+    if (typeof elm != 'undefined'){
+      var classes = elm.className;
+       if (typeof classes != 'undefined'){
+          classes = classes.replace(new RegExp("active", "g"), "");
+          elm.className = classes;
+      }
+    }
+  });
+  
+
+  // Add 'active' to 'element' button if not already there
+  classes = element.className;
+  if (classes.indexOf("active") === -1) {
+    classes += " active";
+    element.className = classes;
+  }
+
 };
 
 // On page load (before images or CSS)
@@ -176,7 +203,8 @@ function buildAndShowAboutHTML (aboutHtml) {
     else
       aboutHtml = insertProperty(aboutHtml, "star"+i, "fa fa-star-o")
   }
-   insertHtml("#main-content", aboutHtml);
+  insertHtml("#main-content", aboutHtml);
+  switchToActive(document.querySelector("#navAboutButton")); 
 }
 // Builds HTML for the categories page based on the data
 // from the server
@@ -190,7 +218,7 @@ function buildAndShowCategoriesHTML (categories) {
         categoryHtml,
         function (categoryHtml) {
           // Switch CSS class active to menu button
-          switchMenuToActive();
+          switchToActive(document.querySelector("#navMenuButton"));
 
           var categoriesViewHtml =
             buildCategoriesViewHtml(categories,
@@ -246,7 +274,7 @@ function buildAndShowMenuItemsHTML (categoryMenuItems) {
         menuItemHtml,
         function (menuItemHtml) {
           // Switch CSS class active to menu button
-          switchMenuToActive();
+          switchToActive(document.querySelector("#navMenuButton"));
 
           var menuItemsViewHtml =
             buildMenuItemsViewHtml(categoryMenuItems,
