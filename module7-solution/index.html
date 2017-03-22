@@ -36,11 +36,13 @@
      <ul>
        <li ng-repeat="item in tobuy.itemsToBuy">
          Buy {{item.quantity}} {{item.name}}
+         <input type="number" ng-model="item.quantity" placeholder="quantity"  style="width: 3em"  ng-blur="tobuy.validateQuantity(item.quantity);"">
          <button class="btn btn-default" ng-click="tobuy.bought($index);">
            <span class="glyphicon glyphicon-ok"></span> Bought
          </button>
        </li>
      </ul>
+     <div class="emptyMessage">{{tobuy.errorMessage}}</div>
      <div ng-if="!tobuy.itemsToBuy.length" class="emptyMessage">Everything is bought!</div>
     </div>
 
@@ -48,9 +50,11 @@
     <div class="col-md-6" ng-controller='AlreadyBoughtController as bought'>
      <h2>Already Bought:</h2>
      <ul>
-       <li ng-repeat="item in bought.itemsBought">Bought {{item.quantity}} {{item.name}}</li>
+       <li ng-repeat="item in bought.itemsBought">Bought {{item.quantity}} of {{item.name}} for total price of {{bought.totalPrice($index) | number :2 | tripledollarsign}}</li>
      </ul>
+     <div class="emptyMessage">{{bought.errorMessage}}</div>
      <div ng-if="!bought.itemsBought.length" class="emptyMessage">Nothing bought yet.</div>
+
     </div>
   </div>
 </div>
