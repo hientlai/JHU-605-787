@@ -25,18 +25,14 @@
    return ddo;
  }
  function FoundItemsDirectiveLink(scope, element, attrs, controller) {
-
   scope.$watch('ctrl.isError()', function (newValue, oldValue) {
-    console.log(controller.found + " " + newValue  + " " + oldValue );
-    if (controller.found  !== undefined){
+
       if(newValue === true) {
         displayError(element);
       }
       else {
         removeError(element);
       }
-    }
-
   });
 
 }
@@ -44,7 +40,7 @@
  function NarrowItDownDirectiveController(){
   var ctrl = this;
   ctrl.isError = function () {
-    if(ctrl.searchTerm !== undefined && ctrl.found != undefined && ctrl.searchTerm.length> 0 && ctrl.found.length > 0){
+    if(ctrl.found == undefined || (ctrl.searchTerm !== undefined && ctrl.found != undefined && ctrl.searchTerm.length> 0 && ctrl.found.length > 0)){
       return false;
     }else{
       return true;
