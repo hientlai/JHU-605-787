@@ -2,10 +2,11 @@
 "use strict";
 
 angular.module('public')
-.service('SignUpService', SignUpService);
+.service('SignUpService', SignUpService)
+.constant('ApiBasePath', "https://hientlai-course5.herokuapp.com");
 
-SignUpService.$inject = ['$http', 'ApiPath'];
-function SignUpService($http, ApiPath) {
+SignUpService.$inject = ['$http', 'ApiBasePath'];
+function SignUpService($http, ApiBasePath) {
   var service = this;
   service.item = {};
 
@@ -32,7 +33,7 @@ function SignUpService($http, ApiPath) {
   service.validateFavoriesDish = function(shortName){
     return $http({
         method: "GET",
-        url: (ApiPath + '/menu_items/' + shortName + '.json')
+        url: (ApiBasePath + '/menu_items/' + shortName + '.json')
       }).then(
               function (response) {
                 service.item = response.data;
