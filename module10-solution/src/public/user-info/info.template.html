@@ -1,0 +1,4 @@
+<span ng-if="!signup.isRegistered()">You have not signed up yet.
+  <a ui-sref="public.signup">Sign up now!</a>
+</span>
+<user-info ng-if="signup.isRegistered()" user="signup.getUser()" item="signup.getFavoriteDish()"></user-info>
